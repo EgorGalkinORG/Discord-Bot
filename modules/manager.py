@@ -1,5 +1,4 @@
-import discord
-import asyncio
+import discord, asyncio
 from discord.ext import commands
 from . import command
 from .tools.json_manager import read_json
@@ -9,6 +8,7 @@ config = read_json("static/json/config.json")
 TOKEN = config["TOKEN"]
 PREFIX = "/"
 
+voice_clients = {}
 intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
@@ -17,7 +17,8 @@ bot = commands.Bot(command_prefix=PREFIX, intents=intents)
 
 def run():
     command.mute_commmands_function(bot, commands)
-    command.chat_herlpers_function(bot, commands)    
+    command.chat_herlpers_function(bot, commands)
+    command.music_comands_function(bot)    
     @bot.event
     async def on_member_join(member):
         guild = member.guild
