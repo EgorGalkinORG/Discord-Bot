@@ -19,6 +19,7 @@ def run():
     command.mute_commmands_function(bot, commands)
     command.chat_herlpers_function(bot, commands)
     command.music_comands_function(bot)    
+    command.level_function(bot, commands)
     @bot.event
     async def on_member_join(member):
         guild = member.guild
