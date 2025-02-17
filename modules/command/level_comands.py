@@ -30,9 +30,15 @@ def level_function(bot, commands):
     @bot.command()
     async def level(ctx):
         user_id = str(ctx.author.id)
+        user = ctx.author
+        role = ctx.guild.get_role(1341119335434813515)
+        if role in user.roles:
+            active = "Активний!🟩"
+        else:
+            active = "не активний⬛..."
         level = xp_data.get(user_id, {}).get("level", 1)
         xp = 5000 * xp_data[user_id]["level"] - int(xp_data[user_id]["xp"])
-        await ctx.send(f"🔹 {ctx.author.mention}, твiй рiвень: {level}\nДо наступного рівня {xp} досвіду")
+        await ctx.send(f"🔹 {ctx.author.mention}, твiй рiвень: {level}! Git активність: {active}\nДо наступного рівня {xp} досвіду")
 
     @bot.command()
     @commands.has_permissions(administrator=True)

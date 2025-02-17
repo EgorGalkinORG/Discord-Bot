@@ -1,5 +1,4 @@
-import discord
-import requests
+import discord, requests
 from bs4 import BeautifulSoup
 
 def chat_herlpers_function(bot, commands):
@@ -34,4 +33,5 @@ def chat_herlpers_function(bot, commands):
             await ctx.send(owner_avatar)
         else:
             await ctx.send("Помилка")
+
         
